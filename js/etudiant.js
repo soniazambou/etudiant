@@ -32,7 +32,7 @@ _addMatiereButton.addEventListener('click', () => {
     // Actions buttons
     let _btnRemove = document.createElement('a');
     _btnRemove.setAttribute('class', 'btn btn-danger');
-    _btnRemove.innerHTML = '- ';
+    _btnRemove.innerHTML = '-';
 
     console.log(_btnRemove);
 
@@ -72,7 +72,7 @@ function onSaveButtonClick(matiere) {
     saveNewStudent(_student);
     showStudentOnTable(_student);
 
-    alert('Etudiant sauvegarde !');
+    alert('Etudiant sauvegardé !');
     clearFormData();
 }
 
@@ -101,7 +101,7 @@ function showStudentOnTable(_currentStudent = new Etudiant()) {
     // Actions buttons
     let _btnEdit = document.createElement('a');
     _btnEdit.setAttribute('class', 'btn btn-warning');
-    _btnEdit.innerHTML = '+ ';
+    _btnEdit.innerHTML = '+';
 
     let _btnDele = document.createElement('a');
     _btnDele.setAttribute('class', 'btn btn-danger text-dark mx-2');
@@ -159,7 +159,7 @@ function showStudentDetailledInfos(_studentId) {
     // Notes
     document.getElementById('tab_mynote').innerHTML = '';
     let _notes = _student.matieres;
-    if (_notes.length > 0) {
+    if (_notes.length > 0 && _notes.length < 20) {
 
         _notes.forEach((note) => {
             let _tab_note = document.getElementById('tab_mynote');
@@ -172,7 +172,11 @@ function showStudentDetailledInfos(_studentId) {
             _tab_note.appendChild(_tr);
         });
     }
+    let _cacheButton = document.getElementById('cache');
+     _cacheButton.addEventListener('click', () => (showStudentDetailledInfos(_studentId)));
+
 }
+
 
 function clearFormData() {
     _tempMatieres = [];
